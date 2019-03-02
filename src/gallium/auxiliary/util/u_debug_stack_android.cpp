@@ -21,9 +21,9 @@
  * IN THE SOFTWARE.
  */
 
-#include <backtrace/Backtrace.h>
+//#include <backtrace/Backtrace.h>
 
-#include "u_debug.h"
+#include "util/u_debug.h"
 #include "u_debug_stack.h"
 #include "util/hash_table.h"
 #include "os/os_thread.h"
@@ -36,6 +36,8 @@ debug_backtrace_capture(debug_stack_frame *mesa_backtrace,
                         unsigned start_frame,
                         unsigned nr_frames)
 {
+    (void)mesa_backtrace, (void)start_frame, (void)nr_frames;
+#if 0
    hash_entry *backtrace_entry;
    Backtrace *backtrace;
    pid_t tid = gettid();
@@ -68,12 +70,15 @@ debug_backtrace_capture(debug_stack_frame *mesa_backtrace,
     * but that is how u_debug_stack is used anyway.
     */
    mesa_backtrace->function = backtrace;
+#endif
 }
 
 void
 debug_backtrace_dump(const debug_stack_frame *mesa_backtrace,
                      unsigned nr_frames)
 {
+    (void)mesa_backtrace, (void)nr_frames;
+#if 0
    Backtrace *backtrace = (Backtrace *) mesa_backtrace->function;
    size_t i;
 
@@ -89,6 +94,7 @@ debug_backtrace_dump(const debug_stack_frame *mesa_backtrace,
       const std::string& frame_line = backtrace->FormatFrameData(i);
       debug_printf("%s\n", frame_line.c_str());
    }
+#endif
 }
 
 void
@@ -96,6 +102,8 @@ debug_backtrace_print(FILE *f,
                       const debug_stack_frame *mesa_backtrace,
                       unsigned nr_frames)
 {
+    (void)f, (void)mesa_backtrace, (void)nr_frames;
+#if 0
    Backtrace *backtrace = (Backtrace *) mesa_backtrace->function;
    size_t i;
 
@@ -108,4 +116,5 @@ debug_backtrace_print(FILE *f,
       const std::string& frame_line = backtrace->FormatFrameData(i);
       fprintf(f, "%s\n", frame_line.c_str());
    }
+#endif
 }

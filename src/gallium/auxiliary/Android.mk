@@ -45,6 +45,8 @@ LOCAL_SRC_FILES += \
 $(call mesa-build-with-llvm)
 endif
 
+#LOCAL_STATIC_LIBRARIES += libbacktrace
+
 LOCAL_CPPFLAGS += -std=c++11
 
 # We need libmesa_nir to get NIR's generated include directories.

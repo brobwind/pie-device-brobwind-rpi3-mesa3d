@@ -431,7 +431,7 @@ v3d_simulator_map_winsys_bo(int fd, struct v3d_simulator_bo *sim_bo)
                 abort();
         }
 
-        map = mmap(NULL, sim_bo->size, PROT_READ | PROT_WRITE, MAP_SHARED,
+        map = mmap64(NULL, sim_bo->size, PROT_READ | PROT_WRITE, MAP_SHARED,
                    fd, map_dumb.offset);
         if (map == MAP_FAILED) {
                 fprintf(stderr,

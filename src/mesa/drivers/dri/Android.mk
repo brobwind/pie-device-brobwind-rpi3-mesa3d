@@ -57,5 +57,5 @@ MESA_DRI_SHARED_LIBRARIES := \
 #-----------------------------------------------
 # Build drivers and libmesa_dri_common
 
-SUBDIRS := common i915 i965
+SUBDIRS := common
 include $(foreach d, $(SUBDIRS), $(LOCAL_PATH)/$(d)/Android.mk)

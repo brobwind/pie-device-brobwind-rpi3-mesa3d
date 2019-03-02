@@ -53,5 +53,7 @@ BROADCOM_PER_VERSION_SOURCES = \
 BROADCOM_DECODER_FILES = \
 	cle/v3d_decoder.c \
 	cle/v3d_decoder.h \
+	clif/clif_dump.c \
+	clif/clif_dump.h \
 	$()
 

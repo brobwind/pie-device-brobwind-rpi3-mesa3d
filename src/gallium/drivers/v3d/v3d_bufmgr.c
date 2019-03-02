@@ -517,7 +517,7 @@ v3d_bo_map_unsynchronized(struct v3d_bo *bo)
                 abort();
         }
 
-        bo->map = mmap(NULL, bo->size, PROT_READ | PROT_WRITE, MAP_SHARED,
+        bo->map = mmap64(NULL, bo->size, PROT_READ | PROT_WRITE, MAP_SHARED,
                        bo->screen->fd, offset);
         if (bo->map == MAP_FAILED) {
                 fprintf(stderr, "mmap of bo %d (offset 0x%016llx, size %d) failed\n",

@@ -479,7 +479,7 @@ vc4_simulator_map_winsys_bo(int fd, struct vc4_simulator_bo *sim_bo)
                 abort();
         }
 
-        map = mmap(NULL, obj->base.size, PROT_READ | PROT_WRITE, MAP_SHARED,
+        map = mmap64(NULL, obj->base.size, PROT_READ | PROT_WRITE, MAP_SHARED,
                    fd, map_dumb.offset);
         if (map == MAP_FAILED) {
                 fprintf(stderr,
@@ -567,7 +567,7 @@ vc4_simulator_create_shader_bo_ioctl(int fd,
         if (ret)
                 return ret;
 
-        void *shader = mmap(NULL, args->size, PROT_READ | PROT_WRITE, MAP_SHARED,
+        void *shader = mmap64(NULL, args->size, PROT_READ | PROT_WRITE, MAP_SHARED,
                             fd, map.offset);
         memcpy(shader, (void *)(uintptr_t)args->data, args->size);
         munmap(shader, args->size);

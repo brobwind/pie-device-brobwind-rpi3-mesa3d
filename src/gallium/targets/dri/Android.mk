@@ -40,7 +40,6 @@ LOCAL_LDFLAGS := \
 	-Wl,--undefined-version
 
 LOCAL_SHARED_LIBRARIES := \
-	libbacktrace \
 	libdl \
 	libglapi \
 	libexpat \
@@ -76,6 +75,12 @@ LOCAL_POST_INSTALL_CMD := \
 else
 LOCAL_MODULE_SYMLINKS := $(foreach d, $(GALLIUM_TARGET_DRIVERS), $(d)_dri.so)
 endif
+
+LOCAL_REQUIRED_MODULES := \
+	libexpat.vendor
+
+LOCAL_POST_INSTALL_CMD := \
+	$(ACP) $(TARGET_OUT)/lib/vndk-28/libexpat.so $(TARGET_OUT_VENDOR)/lib/libexpat.so
 
 include $(GALLIUM_COMMON_MK)
 include $(BUILD_SHARED_LIBRARY)
